@@ -17,6 +17,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Knock for Auth0
 gem 'knock', git: 'https://github.com/nsarno/knock.git'
 
+gem 'active_model_serializers', github: "rails-api/active_model_serializers"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

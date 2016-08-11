@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :authenticate_user, only: [:index, :show, :update, :destroy]
+
+  def index
+    @user = User.find(params[:id]).happenings.order(:start_date)
+
+    render json: @user
+  end
 
   def show
     render json: @user
@@ -32,7 +38,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:email, :password)
+      params.require(:user).permit(:email, :password, :username)
     end
 
 end
