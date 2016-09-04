@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user
+  before_action :authenticate_user, only: [:show, :index, :update]
 
   def index
     if params.has_key?('id')
       @user = User.find(params[:id]).happenings.order(:start_date)
     else
-      @user = User.all 
+      @user = User.all
     end
 
     render json: @user
